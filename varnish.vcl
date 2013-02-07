@@ -3,14 +3,14 @@
 
 backend backend_0 {
 .host = "127.0.0.1";
-.port = "8080";
+.port = "80";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
 backend backend_1 {
 .host = "127.0.0.1";
-.port = "8080";
+.port = "80";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
@@ -37,15 +37,15 @@ acl purge {
 sub vcl_recv {
     set req.grace = 120s;
     if (req.http.host ~ "(?i)^(www.)?popejoypresents.com(:[0-9]+)?$") {
-		set req.url = "/VirtualHostBase/http/popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
+		set req.url = "/VirtualHostBase/http/popejoypresents.com:8080/Plone/VirtualHostRoot" req.url;
 		set req.backend = backend_0;
 	}
 	elsif (req.http.host ~ "(?i)^(www.)?schooltimeseries.com(:[0-9]+)?$") {
-		set req.url = "/VirtualHostBase/http/schooltimeseries.com:80/Schooltime/VirtualHostRoot" req.url;
+		set req.url = "/VirtualHostBase/http/schooltimeseries.com:8080/Schooltime/VirtualHostRoot" req.url;
 		set req.backend = backend_1;
 	}
 	elsif (req.http.host ~ "^board.popejoypresents.com(:[0-9]+)?$") {
-		set req.url = "/VirtualHostBase/http/board.popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
+		set req.url = "/VirtualHostBase/http/board.popejoypresents.com:8080/Plone/VirtualHostRoot" req.url;
 		set req.backend = backend_2;
 	}
 	else {

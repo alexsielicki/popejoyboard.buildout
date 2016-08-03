@@ -22,6 +22,13 @@ backend backend_2 {
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
+backend backend_3 {
+.host = "23.253.242.44";
+.port = "8080";
+.connect_timeout = 0.4s;
+.first_byte_timeout = 300s;
+.between_bytes_timeout = 60s;
+}
 
 
 acl purge {
@@ -48,6 +55,10 @@ sub vcl_recv {
 		set req.url = "/VirtualHostBase/http/board.popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
 		set req.backend = backend_2;
 	}
+    elsif (req.http.host ~ "^new.popejoypresents.com(:[0-9]+)?$") {
+        set req.url = "/VirtualHostBase/http/new.popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
+        set req.backend = backend_3;
+    }
 	else {
 		error 404 "Unknown virtual host";
 	}

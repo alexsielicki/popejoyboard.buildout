@@ -45,7 +45,7 @@ sub vcl_recv {
     set req.grace = 120s;
     if (req.http.host ~ "(?i)^(www.)?popejoypresents.com(:[0-9]+)?$") {
 		set req.url = "/VirtualHostBase/http/popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
-		set req.backend = backend_0;
+		set req.backend = backend_3;
 	}
 	elsif (req.http.host ~ "(?i)^(www.)?schooltimeseries.com(:[0-9]+)?$") {
 		set req.url = "/VirtualHostBase/http/schooltimeseries.com:80/Schooltime/VirtualHostRoot" req.url;

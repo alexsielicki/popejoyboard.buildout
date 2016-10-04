@@ -1,13 +1,6 @@
 # This is a basic VCL configuration file for varnish.  See the vcl(7)
 # man page for details on VCL syntax and semantics.
 
-backend backend_0 {
-.host = "127.0.0.1";
-.port = "8080";
-.connect_timeout = 0.4s;
-.first_byte_timeout = 300s;
-.between_bytes_timeout = 60s;
-}
 backend backend_1 {
 .host = "127.0.0.1";
 .port = "8080";
@@ -22,12 +15,48 @@ backend backend_2 {
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
-backend backend_3 {
+
+backend popejoypresents_0 {
 .host = "23.253.242.44";
 .port = "8080";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
+}
+backend popejoypresents_1 {
+.host = "23.253.242.44";
+.port = "8081";
+.connect_timeout = 0.4s;
+.first_byte_timeout = 300s;
+.between_bytes_timeout = 60s;
+}
+backend popejoypresents_2 {
+.host = "23.253.242.44";
+.port = "8082";
+.connect_timeout = 0.4s;
+.first_byte_timeout = 300s;
+.between_bytes_timeout = 60s;
+}
+backend popejoypresents_3 {
+.host = "23.253.242.44";
+.port = "8083";
+.connect_timeout = 0.4s;
+.first_byte_timeout = 300s;
+.between_bytes_timeout = 60s;
+}
+director popejoypresents random {
+        {
+                .backend = popejoypresents_0;
+        }
+        {
+                .backend = popejoypresents_1;
+        }
+        {
+                .backend = popejoypresents_2;
+        }
+        {
+                .backend = popejoypresents_3;
+        }
 }
 
 
@@ -45,7 +74,7 @@ sub vcl_recv {
     set req.grace = 120s;
     if (req.http.host ~ "(?i)^(www.)?popejoypresents.com(:[0-9]+)?$") {
 		set req.url = "/VirtualHostBase/http/popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
-		set req.backend = backend_3;
+		set req.backend = popejoypresents;
 	}
 	elsif (req.http.host ~ "(?i)^(www.)?schooltimeseries.com(:[0-9]+)?$") {
 		set req.url = "/VirtualHostBase/http/schooltimeseries.com:80/Schooltime/VirtualHostRoot" req.url;

@@ -47,15 +47,19 @@ backend popejoypresents_3 {
 director popejoypresents random {
         {
                 .backend = popejoypresents_0;
+                .weight = 1;
         }
         {
                 .backend = popejoypresents_1;
+                .weight = 1;
         }
         {
                 .backend = popejoypresents_2;
+                .weight = 1;
         }
         {
                 .backend = popejoypresents_3;
+                .weight = 1;
         }
 }
 

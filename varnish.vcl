@@ -90,7 +90,7 @@ sub vcl_recv {
 	}
     elsif (req.http.host ~ "^new.popejoypresents.com(:[0-9]+)?$") {
         set req.url = "/VirtualHostBase/http/new.popejoypresents.com:80/Plone/VirtualHostRoot" req.url;
-        set req.backend = backend_3;
+        set req.backend = popejoypresents;
     }
 	else {
 		error 404 "Unknown virtual host";

@@ -2,14 +2,14 @@
 # man page for details on VCL syntax and semantics.
 
 backend schooltime_0 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "7080";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
 backend board_0 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "9090";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
@@ -17,28 +17,28 @@ backend board_0 {
 }
 
 backend popejoypresents_0 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "8080";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
 backend popejoypresents_1 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "8081";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
 backend popejoypresents_2 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "8082";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
 .between_bytes_timeout = 60s;
 }
 backend popejoypresents_3 {
-.host = "127.0.0.1";
+.host = "23.253.242.44";
 .port = "8083";
 .connect_timeout = 0.4s;
 .first_byte_timeout = 300s;
